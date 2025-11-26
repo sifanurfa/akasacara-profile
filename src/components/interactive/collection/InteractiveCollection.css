@@ -1,0 +1,29 @@
+/* CSS for PopularGame.tsx kategori game in hero section */
+.kategori {
+    color: #FFF;
+    font-family: var(--font-poppins);
+    font-size: var(--text-body);
+    font-style: italic;
+    font-weight: 500;
+    line-height: var(--text-lineheight-body);
+    letter-spacing: -0.04px;
+}
+
+/* CSS for PopularGame.tsx thumbnail */
+.thumbnail-slider-container {
+  position: absolute;
+  bottom: -290px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  z-index: 5;
+}
+
+.thumbnail-slider-container .slick-slide {
+  transition: all 0.3s ease;
+}
+
+.thumbnail-slider-container .slick-track {
+  display: flex;
+  gap: var(--container-spacing-m);
+}
