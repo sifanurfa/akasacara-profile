@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import styles from "./Poster.module.css";
 import PosterSlider from '@/components/vfx/home/PosterSlider';
+import Footer from '@/components/Footer';
 
 function VFXHome() {
   return (
@@ -182,6 +183,7 @@ function VFXHome() {
                 </div>
             </div>
         </div>
+        <Footer/>
     </div>
   )
 }
