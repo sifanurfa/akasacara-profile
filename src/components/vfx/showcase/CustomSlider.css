@@ -1,119 +1,35 @@
-/* src/app/CustomSlider.css atau src/styles/CustomSlider.css */
-
-/* Mengatur ukuran dan penampilan slide */
-.slick-slide-custom {
-  /* Memberikan ruang antar slide, disesuaikan dengan kebutuhan Anda */
-  padding: 0 10px; /* Contoh: 10px padding kiri-kanan */
-  transition: all 0.3s ease-in-out; /* Animasi saat slide berubah */
-}
-
-/* Styling untuk slide yang sedang aktif (tengah) */
-.slick-center .slick-slide-custom {
-  transform: scale(1.1); /* Membuat slide tengah sedikit lebih besar */
-  opacity: 1; /* Pastikan opacity penuh */
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Efek bayangan */
-  z-index: 1; /* Pastikan di atas slide lain */
-}
-
-/* Styling untuk slide di samping (tidak aktif) */
-.slick-slide:not(.slick-center) .slick-slide-custom {
-  opacity: 0.7; /* Membuat slide samping sedikit transparan */
-  filter: brightness(0.7); /* Membuat slide samping sedikit gelap */
-  transform: scale(0.9); /* Membuat slide samping sedikit lebih kecil */
-}
-
-/* Overriding default styling untuk panah navigasi */
-.slick-prev:before,
-.slick-next:before {
-  font-family: "slick";
-  font-size: 30px; /* Ukuran icon panah */
-  line-height: 1;
-  opacity: 0.75;
-  color: white; /* Warna panah */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Mengatur posisi panah agar di luar gambar */
-.slick-prev {
-  left: 0px; /* Sesuaikan posisi panah kiri */
-}
-.slick-next {
-  right: 0px; /* Sesuaikan posisi panah kanan */
-}
-
-/* Pastikan panah terlihat di atas slider */
-.custom-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40px; /* Ukuran area klik panah */
-  height: 40px;
-  background-color: rgba(0, 0, 0, 0.5); /* Background panah (opsional) */
-  border-radius: 50%; /* Bentuk lingkaran */
+.cursorHover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-  z-index: 10; /* Pastikan panah di atas gambar */
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  scale: 0.5;
+  transition: opacity 0.2s ease;
 }
 
-.prev-arrow {
-  left: 20px; /* Sesuaikan agar panah di dalam area slider tapi agak ke pinggir */
+.cursorHover svg {
+  pointer-events: none;
 }
 
-.next-arrow {
-  right: 20px; /* Sesuaikan */
+.spin {
+  display: inline-block;
+  animation: rotate 3s linear infinite;
 }
 
-/* Hilangkan background default dari react-slick di panah */
-.slick-prev.slick-arrow::before,
-.slick-next.slick-arrow::before {
-  content: "";
-  display: none; /* Sembunyikan konten ikon default */
-}
-
-/* Gunakan ikon kustom jika ingin */
-.slick-prev.slick-arrow {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M15.75 19.5 8.25 12l7.5-7.5' /%3E%3C/svg%3E");
-  background-size: 24px;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.slick-next.slick-arrow {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.25 4.5 15.75 12l-7.5 7.5' /%3E%3C/svg%3E");
-  background-size: 24px;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-
-/* Jika Anda ingin menghilangkan panah default dari slick-theme.css sepenuhnya */
-.slick-initialized .slick-prev,
-.slick-initialized .slick-next {
-  background: none !important; /* Hapus background default */
-}
-
-
-/* Responsif untuk mobile */
-@media (max-width: 768px) {
-  .slick-slide-custom {
-    padding: 0; /* Hapus padding antar slide di mobile jika centerPadding digunakan */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
   }
-
-  .slick-center .slick-slide-custom {
-    transform: scale(1); /* Jangan besarkan slide tengah di mobile */
-    opacity: 1;
-  }
-
-  .slick-slide:not(.slick-center) .slick-slide-custom {
-    opacity: 1; /* Tidak perlu transparan di mobile */
-    filter: none; /* Tidak perlu gelap di mobile */
-    transform: scale(1);
-  }
-
-  .custom-arrow {
-    display: none !important; /* Sembunyikan panah di mobile jika tidak diinginkan */
+  to {
+    transform: rotate(360deg);
   }
 }

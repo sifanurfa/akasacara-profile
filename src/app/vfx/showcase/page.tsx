@@ -2,9 +2,9 @@
 
 import React from 'react'
 import styles from "./Showcase.module.css";
-import BreakdownCard from '@/components/vfx/showcase/BreakdownCard';
-import CustomArrows from '@/components/vfx/showcase/Slider';
-import VerticalThumbSlider from '@/components/vfx/showcase/Breakdown';
+import ContentCard from '@/components/vfx/showcase/ContentCard';
+import LatestBreakdown from './LatestBreakdownSection';
+import Breakdown from '@/components/vfx/showcase/Breakdown';
 
 const announcements = [
   {
@@ -29,19 +29,19 @@ const announcements = [
     id: 4,
     title: "Berproses Meraih Sukses",
     content: "Iklan pendek untuk program MSIB Merdeka Belajar dari Kemendikbud RI.",
-    image: "/assets/gowok.png",
+    image: "/assets/berproses_meraih_sukses.png",
   },
   {
     id: 5,
     title: "Tour Tedi",
     content: "Aplikasi Tour TEDI ini merupakan aplikasi berbasis Virtual Reality yang penggunanya dapat berjalan-jalan di kawasan Kampus Universitas Gadjah Mada khususnya di Departemen TEDI (Teknik Elektro Dan Informatika",
-    image: "/assets/gowok.png",
+    image: "/assets/tour_TEDI.png",
   },
   {
     id: 6,
     title: "KLHK",
     content: "Sebuah video animasi 2D yang menjelaskan tentang SIMONTANA. Sistem Monitoring Hutan Nasional (SIMONTANA) merupakan sistem yang sudah berlangsung cukup lama sejak tahun 1990.",
-    image: "/assets/gowok.png",
+    image: "/assets/KLHK.png",
   },
 ];
 
@@ -54,22 +54,21 @@ function VFXShowcase() {
 
         {/* slider */}
         <div className="flex pb-section justify-center items-center gap-4xl self-stretch overflow-hidden">
-            <CustomArrows/>
+            <LatestBreakdown/>
         </div>
 
-        {/* section breakdown */}
-        <div className="flex px-section justify-between items-center self-stretch">
+        <div className="flex px-container pt-section justify-between items-center self-stretch">
             <div className="headline-1 vfx-text-title">Breakdown Series</div>
         </div>
 
         {/* interactice breakdown */}
-        <VerticalThumbSlider/>
+        <Breakdown/>
 
-        {/* list content breakdown */}
+        {/* list content */}
         <div className="flex py-section px-container flex-col items-start gap-2xl self-stretch">
             <div className="grid grid-cols-2 gap-2xl items-start self-stretch">
                 {announcements.map((item) => (
-                    <BreakdownCard
+                    <ContentCard
                         key={item.id}
                         id={item.id}
                         title={item.title}
