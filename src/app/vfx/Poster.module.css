@@ -27,8 +27,6 @@
   position: relative;
   aspect-ratio: 950 / 534.38;
   overflow: hidden;
-
-  border-radius: 10px;
   background: url('/assets/darah_nyai_2.png') lightgray 50% / cover no-repeat;
 }
 

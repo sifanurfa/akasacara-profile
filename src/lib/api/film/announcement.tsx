@@ -13,7 +13,15 @@ export const AnnouncementFilmApi = {
         ? url
         : `${API_URL}${url.replace("/api/", "/")}`;
 
-      return { ...item, image: fullUrl };
+      const formattedDate = item.date
+      ? new Date(item.date).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        })
+      : "";
+
+      return { ...item, image: fullUrl, date: formattedDate };
     });
   },
 };

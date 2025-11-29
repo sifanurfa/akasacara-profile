@@ -5,6 +5,7 @@ import ServiceCard from '@/components/film/home/ServiceCard';
 import PressCard from '@/components/film/home/PressCard';
 import WorkCard from '@/components/film/home/WorkCard';
 import Image from 'next/image';
+import Link from 'next/link';
 import { AnnouncementFilmApi } from "@/lib/api";
 import { AnnouncementFilm } from "@/types/api/types";
 
@@ -153,12 +154,12 @@ function AkasacaraHome() {
         <div className="flex py-section px-container flex-col items-start gap-3xl self-stretch bg-akasacara-yellow">
           <div className="flex items-end justify-between self-stretch">
             <div className="headline-1 aka-text-title self-stretch">OUR <span className="italic">PRESS</span></div>
-            <div className="flex justify-end items-center gap-m aka-text-title">
+            <Link href="/main/announcement" className="flex justify-end items-center gap-m aka-text-title">
               <span className="button-main">SEE ALL</span>
               <span className="see-all">&gt;</span>
-            </div>
+            </Link>            
           </div>
-          <div className="grid grid-cols-3 justify-center items-start gap-6 self-stretch">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-center items-start gap-6 self-stretch">
             {press.map((item) => (
                 <PressCard
                     key={item.id}
@@ -206,7 +207,7 @@ function AkasacaraHome() {
         <div className="flex flex-col py-section px-container items-start self-stretch group hover:bg-akasacara-yellow transition-all duration-500">
           <div className="flex flex-col items-start gap-xl self-stretch">
             <div className="headline-1 text-akasacara-yellow self-stretch group-hover:text-black">ABOUT  US !</div>
-            <div className="flex items-center self-stretch">
+            <div className="items-center self-stretch grid grid-cols-1 lg:grid-cols-2 gap-xl">
               <div className="flex-1 relative aspect-4/3 overflow-hidden">
                 <Image
                     src="/assets/film/about.png"
@@ -215,7 +216,7 @@ function AkasacaraHome() {
                     className="object-cover"
                 />
               </div>
-              <div className="about-caption flex flex-col flex-1 ps-container justify-center items-center gap-l sub-heading-reg vfx-text-subtitle-1 text-justify">
+              <div className="about-caption flex flex-col flex-1 justify-center items-center gap-l sub-heading-reg vfx-text-subtitle-1 text-justify">
                 <p>Akasacara Film is a small independent multimedia company based in Yogyakarta, Indonesia. Akasacara Film has a role to provide creative innovation in multimedia.</p>
                 <p>Akasacara Film produced a film and distributed it to film festivals and cinemas. The creations which have been produced by Akasacara Film include narrative films, </p>
               </div>

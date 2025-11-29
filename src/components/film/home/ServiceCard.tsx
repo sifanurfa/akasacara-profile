@@ -15,11 +15,12 @@ function ServiceCard({ category, caption, image, details, isLast }: ServiceCardP
   return (
     <div className="flex flex-col items-start self-stretch gap-l group">
         <div className="flex items-start gap-m self-stretch transition-all duration-500 group-hover:px-[42px] group-hover:bg-akasacara-yellow">
-            <div className="hidden flex-1 flex-col group-hover:flex self-center items-start gap-m">
+            <div className="flex group-hover:hidden flex-col xl:w-1/3 items-start gap-m">
                 <div className="service-title vfx-text-title">{category}</div>
                 <div className="service-desc caption-reg vfx-text-subtitle-1 self-stretch">{caption}</div>
             </div>
-            <div className="flex group-hover:hidden flex-col w-1/3 items-start gap-m">
+            {/* hover */}
+            <div className="hidden flex-1 flex-col group-hover:flex self-center items-start gap-m">
                 <div className="service-title vfx-text-title">{category}</div>
                 <div className="service-desc caption-reg vfx-text-subtitle-1 self-stretch">{caption}</div>
             </div>
