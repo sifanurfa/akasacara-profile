@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import styles from "./Poster.module.css";
+import "./Poster.css";
 
 const slides = [
   { src: "/assets/darah_nyai.png", title: "Darah Nyai" },
@@ -22,29 +22,29 @@ export default function PosterSlider() {
   const settings = {
     className: "center",
     centerMode: true,
-    centerPadding: "60px",
     focusOnSelect: true,
     infinite: true,
-    slidesToShow: 3,
+    // centerPadding: "60px",
+    slidesToShow: 4,
     slidesToScroll: 1,
     speed: 500,
     arrows: false,
   };
 
   return (
-    <div className="slider-container w-full overflow-hidden gap-xl">
+    <div className="slider-container w-full overflow-hidden">
       <Slider {...settings}>
-        {slides.map((slide, idx) => (
-          <div key={idx} className={styles.posterWrapper}>
-            <div className={styles.posterImage}>
+        {slides.map((item, idx) => (
+          <div key={idx} className="pe-xl flex justify-center items-center self-stretch">
+            <div className="relative w-poster image overflow-hidden aspect-2/3 rounded-[10px]">
               <Image
-                src={slide.src}
-                alt={slide.title}
+                src={item.src}
+                alt={`image-${idx}`}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-300 ease-in-out"
               />
             </div>
-            <div className={styles.posterTitle}>{slide.title}</div>
+            <div className="self-stretch title mt-md vfx-text-title sub-heading-light">{item.title}</div>
           </div>
         ))}
       </Slider>

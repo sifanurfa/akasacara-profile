@@ -1,0 +1,107 @@
+.press-category {
+    font-family: var(--font-poppins);
+    font-size: var(--text-body);
+    font-style: normal;
+    font-weight: 500;
+    line-height: var(--text-lineheight-body);
+}
+
+.garis {
+    background-color: rgba(0, 0, 0, 0.50);
+}
+
+.garis-service {
+    background-color: rgba(0, 0, 0, 0.50);
+}
+
+.press-title {
+    font-family: var(--font-playfair-display);
+    font-size: var(--text-subheading);
+    font-style: normal;
+    font-weight: 600;
+    line-height: var(--text-lineheight-subheading);
+}
+
+.service-title {
+    font-family: var(--font-playfair-display);
+    font-size: var(--text-headline-2);
+    font-style: italic;
+    font-weight: 600;
+    line-height: var(--text-lineheight-headline-2);
+}
+
+.group:hover .service-title {
+    color: #000;
+    /* headline 1 */
+    font-family: var(--font-playfair-display);
+    font-size: var(--text-headline-1);
+    font-style: var(--fontstyle-headline-1);
+    font-weight: var(--fontweight-headline-1);
+    line-height: var(--text-lineheight-headline-1);
+}
+
+.group:hover .service-title {
+    color: #000;
+    /* headline 1 */
+    font-family: var(--font-playfair-display);
+    font-size: var(--text-headline-1);
+    font-style: var(--fontstyle-headline-1);
+    font-weight: var(--fontweight-headline-1);
+    line-height: var(--text-lineheight-headline-1);
+}
+
+.group:hover .service-desc {
+    color: #000;
+    /* body reg */
+    font-family: var(--font-poppins);
+    font-size: var(--text-body);
+    font-style: var(--fontstyle-body-reg);
+    font-weight: var(--fontweight-body-reg);
+    line-height: var(--text-lineheight-body);
+}
+
+.service-content {
+    font-family: var(--font-playfair-display);
+    font-size: var(--text-headline-3);
+    font-style: italic;
+    font-weight: 500;
+    line-height: var(--text-lineheight-headline-3);
+}
+
+.service-content {
+  overflow: hidden;
+  height: 270px;
+  position: relative;
+}
+
+.service-content-inner {
+  animation: scroll-up 5s linear infinite;
+}
+
+.service-content:hover .service-content-inner {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+/* our works */
+.group:hover .work-title {
+    color: #F4BB26;
+    /* headline 1 */
+    font-family: var(--font-playfair-display);
+    font-size: var(--text-headline-1);
+    font-style: var(--fontstyle-headline-1);
+    font-weight: var(--fontweight-headline-1);
+    line-height: var(--text-lineheight-headline-1);
+}
+
+.group:hover .about-caption {
+    color: #000;
+}

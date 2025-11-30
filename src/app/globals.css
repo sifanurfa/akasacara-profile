@@ -26,13 +26,15 @@ body {
 } */
 
 @import "tailwindcss";
+@import "tw-animate-css";
 
 :root {
   --vfx-bg: #0D0D0D;
-  --akasacara-bg: #FDFDFD;
-  --interactive-bg: #121212;
+  --akasacara-bg: #000;
+  --interactive-bg: #252525;
   --Hyperlink-txt: #000;
-
+  --akasacara-yellow: #F4BB26;
+  
   --fontweight-headline-1: 800;
   --fontweight-headline-2: 600;
   --fontweight-headline-3: 600;
@@ -46,7 +48,7 @@ body {
   --fontweight-filter: 500;
   --fontweight-title: 800;
   --fontweight-caption: 400;
-  
+
   --fontstyle-headline-1: normal;
   --fontstyle-headline-2: normal;
   --fontstyle-headline-3: normal;
@@ -269,6 +271,7 @@ body {
 
 @theme inline {
   --color-akasacara: var(--akasacara-bg);
+  --color-akasacara-yellow: var(--akasacara-yellow);
   --color-vfx: var(--vfx-bg);
   --color-interactive: var(--interactive-bg);
 
@@ -317,6 +320,13 @@ body {
   font-size: var(--text-caption);
   font-style: var(--fontstyle-caption);
   font-weight: var(--fontweight-caption);
+  line-height: var(--text-lineheight-caption);
+}
+.caption-light {
+  font-family: var(--font-poppins);
+  font-size: var(--text-caption);
+  font-style: var(--fontstyle-caption);
+  font-weight: 300;
   line-height: var(--text-lineheight-caption);
 }
 .button-main {

@@ -1,0 +1,15 @@
+.label-input {
+  font-family: var(--font-poppins);
+  font-size: var(--text-subheading);
+  font-style: normal;
+  font-weight: 500;
+  line-height: var(--text-lineheight-subheading);
+}
+
+.group-title {
+  font-family: var(--font-poppins);
+  font-size: var(--text-body);
+  font-style: normal;
+  font-weight: 700;
+  line-height: var(--text-lineheight-body);
+}
