@@ -19,9 +19,35 @@ export interface InteractiveGame {
   id: number;
   title: string;
   description: string;
+  image: string;
   trailer?: string | null;
   link?: string | null;
   media: Media[];
+  fullImage: string[];
+  backgroundMedia: Media[];
+  backgroundGame: Media[];
+  gameplayMedia: Media[];
+  homepageGame: Media[];
+};
+
+export interface PortofolioGame {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  trailer?: string | null;
+  link?: string | null;
+  rate: number;
+  progres: string;
+  media: Media[];
+  backgroundMedia: Media[];
+  backgroundGame: Media[];
+  gameplayMedia: Media[];
+  homepageGame: Media[];
+  backgroundMediaImage: string;
+  backgroundGameImage: string;
+  gameplayMediaImage: string;
+  homepageGameImage: string;
 };
 
 export interface InteractiveGamePortofolio {

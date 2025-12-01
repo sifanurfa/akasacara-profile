@@ -9,7 +9,6 @@ import { InteractiveGame } from "@/types/api/types";
 
 function InteractiveCollection() {
   const [works, setWorks] = useState<InteractiveGame[]>([]);
-  const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,10 +48,7 @@ function InteractiveCollection() {
             id={item.id}
             title={item.title}
             description={item.description}
-            image={`${baseURL?.replace(
-              "/api",
-              ""
-            )}${item.media?.[0]?.url.replace("/api/", "/")}`}
+            image={item.image}
           />
         ))}
       </div>

@@ -4,20 +4,21 @@ import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { InteractiveGameApi } from "@/lib/api";
-import { InteractiveGamePortofolio } from "@/types/api/types";
+import { PortofolioGame } from "@/types/api/types";
 import WishlistNowBtn from "@/components/interactive/homepage/WishlistNowBtn";
 import WatchTrailerBtn from "@/components/interactive/homepage/WatchTrailerBtn";
+import Image from 'next/image';
 
 const PortofolioList: React.FC = () => {
-  const [portofolios, setPortofolios] = useState<InteractiveGamePortofolio[]>([]);
+  const [portofolios, setPortofolios] = useState<PortofolioGame[]>([]);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
   const [trailerUrl, setTrailerUrl] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await InteractiveGameApi.getGames();
+        const data = await InteractiveGameApi.getPortofolioList();
+        console.log("result:", data);
         setPortofolios(data);
       } catch (err) {
         console.error("Failed to fetch works:", err);
@@ -54,7 +55,7 @@ const PortofolioList: React.FC = () => {
         <div 
           className={`transition-all duration-300 rounded-full flex items-center justify-center ${
             i === currentSlide 
-              ? "w-6 h-6 bg-[#D4AF37]" 
+              ? "w-6 h-6 bg-akasacara-yellow" 
               : "w-4 h-4 bg-white"
           }`}
         ></div>
@@ -71,7 +72,7 @@ const PortofolioList: React.FC = () => {
             <div
               className="w-full h-[70vh] min-h-[600px] bg-cover bg-center relative flex flex-col justify-center items-center"
               style={{
-                backgroundImage: `url('${baseURL?.replace("/api", "")}${item.media?.[0]?.url.replace("/api/", "/")}')`,
+                backgroundImage: `url(${item.backgroundMediaImage})`,
               }}
             >
               {/* Overlay */}
@@ -85,15 +86,15 @@ const PortofolioList: React.FC = () => {
                   <div className="flex-1 flex flex-col justify-start items-start gap-8 lg:gap-12">
                     <div className="w-full flex flex-col justify-center items-start gap-4">
                       
-                      <div className="text-white text-lg sm:text-xl font-normal font-['Poppins'] leading-7">
+                      <div className="vfx-text-title body-reg">
                         {item.progres}
                       </div>
 
-                      <div className="text-white text-3xl sm:text-4xl lg:text-5xl font-semibold font-['Playfair_Display'] leading-tight sm:leading-[56px]">
+                      <div className="vfx-text-title headline-2">
                         {item.title}
                       </div>
 
-                      <div className="text-stone-300 text-base sm:text-lg lg:text-xl font-normal font-['Poppins'] leading-6 sm:leading-7">
+                      <div className="vfx-text-subtitle-1 body-reg">
                         {item.description}
                       </div>
                     </div>
@@ -160,10 +161,31 @@ const PortofolioList: React.FC = () => {
                   </div>
                   
                   {/* Right Side Images */}
-                  <div className="flex-1 flex flex-col justify-center items-center lg:items-end gap-3 mt-8 lg:mt-0">
-                    <img src="/assets/ss01.png" alt="ss" className="w-full max-w-xs lg:max-w-none lg:w-80 rounded-lg shadow-lg" />
-                    <img src="/assets/ss01.png" alt="ss" className="w-full max-w-xs lg:max-w-none lg:w-80 rounded-lg shadow-lg" />
-                    <img src="/assets/ss01.png" alt="ss" className="w-full max-w-xs lg:max-w-none lg:w-80 rounded-lg shadow-lg" />
+                  <div className="flex-1 flex flex-col justify-center items-center lg:items-end gap-3 mt-8 lg:mt-0">                    
+                    <div className="relative w-full overflow-hidden aspect-video max-w-xs lg:max-w-none lg:w-80 shadow-lg">
+                      <Image
+                          src={item.gameplayMediaImage || "/assets/ss01.png"}
+                          alt={item.title}
+                          fill
+                          className="object-cover transition-all duration-500 hover:scale-110"
+                        />
+                    </div>
+                    <div className="relative w-full overflow-hidden aspect-video max-w-xs lg:max-w-none lg:w-80 shadow-lg">
+                      <Image
+                          src={item.backgroundGameImage || "/assets/ss01.png"}
+                          alt={item.title}
+                          fill
+                          className="object-cover transition-all duration-500 hover:scale-110"
+                        />
+                    </div>
+                    <div className="relative w-full overflow-hidden aspect-video max-w-xs lg:max-w-none lg:w-80 shadow-lg">
+                      <Image
+                          src={item.homepageGameImage || "/assets/ss01.png"}
+                          alt={item.title}
+                          fill
+                          className="object-cover transition-all duration-500 hover:scale-110"
+                        />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -173,7 +195,7 @@ const PortofolioList: React.FC = () => {
       </Slider>
       {trailerUrl && (
         <div
-          className="fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/95 z-999 flex items-center justify-center p-4"
           onClick={() => setTrailerUrl(null)}
         >
           <div

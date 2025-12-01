@@ -82,12 +82,15 @@ export default function PopularGame() {
   return (
     <div className="flex flex-col relative pb-section items-center gap-[-40px] self-stretch">
       <div className="flex relative w-full aspect-video overflow-hidden flex-col items-center gap-2.5 self-stretch">
-        <Image
-          src={popularGame.media[currentIndex].url}
-          alt={popularGame.title}
-          fill
-          className="object-cover transition-all duration-500"
-        />
+        {popularGame.fullImage[currentIndex] && (
+          <Image
+            src={popularGame.fullImage[currentIndex]}
+            alt={popularGame.title}
+            fill
+            className="object-cover transition-all duration-500"
+          />
+        )}
+
         <div className="absolute inset-0 bg-black/70"></div>
 
         <div className="absolute inset-y-0 h-screen left-0 w-2/3 px-[89px] z-10 flex flex-col items-start justify-center gap-8">
@@ -125,14 +128,14 @@ export default function PopularGame() {
 
       <div className="thumbnail-slider-container">
         <Slider {...thumbSettings}>
-          {popularGame.media.map((m, i) => (
+          {popularGame.fullImage.map((m, i) => (
             <div key={i} className="px-2 gap-m">
               <button
                 onClick={() => setCurrentIndex(i)}
                 className={`relative w-full aspect-39/22 overflow-hidden transition-all duration-300`}
               >
                 <Image
-                  src={m.url}
+                  src={m}
                   alt={popularGame.title}
                   fill
                   className="object-cover"
