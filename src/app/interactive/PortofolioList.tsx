@@ -205,7 +205,7 @@ const PortofolioList: React.FC = () => {
             {/* Tombol Close */}
             <button
               onClick={() => setTrailerUrl(null)}
-              className="absolute top-4 right-4 z-10 text-white text-5xl hover:text-gray-300 transition-all hover:scale-110"
+              className="absolute top-4 right-4 z-10 text-white text-5xl hover:text-gray-300 transition-all hover:scale-110 cursor-pointer"
             >
               ×
             </button>

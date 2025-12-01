@@ -20,8 +20,8 @@ export interface InteractiveGame {
   title: string;
   description: string;
   image: string;
-  trailer?: string | null;
-  link?: string | null;
+  trailer: string;
+  link: string;
   media: Media[];
   fullImage: string[];
   backgroundMedia: Media[];

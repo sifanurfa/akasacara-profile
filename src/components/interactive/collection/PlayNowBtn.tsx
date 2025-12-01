@@ -23,7 +23,7 @@ function PlayNowBtn() {
         {text.split("").map((char, i) => (
           <span
             key={i}
-            className={`inline-block duration-700 [transition-delay:${i * 0.04}s] group-hover:[transform:rotateX(360deg)] [transform-style:preserve-3d]`}
+            className={`inline-block duration-700 [transition-delay:${i * 0.04}s] group-hover:transform-[rotateX(360deg)] transform-3d`}
           >
             {char === " " ? "\u00A0" : char}
           </span>

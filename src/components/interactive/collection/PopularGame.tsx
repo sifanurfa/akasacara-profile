@@ -12,9 +12,10 @@ import { CustomArrowProps } from "react-slick";
 import { InteractiveGameApi } from "@/lib/api";
 import { InteractiveGame } from "@/types/api/types";
 
-export default function PopularGame() {
+const PopularGame: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [popularGame, setPopularGame] = useState<InteractiveGame | null>(null);
+  const [trailerUrl, setTrailerUrl] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -121,7 +122,7 @@ export default function PopularGame() {
 
           <div className="flex h-[68px] items-center gap-m">
             <PlayNowBtn />
-            <WatchTrailerBtn trailerUrl={popularGame.trailer || ""} />
+            <WatchTrailerBtn trailerUrl={popularGame.trailer} setTrailerUrl={setTrailerUrl} />
           </div>
         </div>
       </div>
@@ -145,6 +146,38 @@ export default function PopularGame() {
           ))}
         </Slider>
       </div>
+      {trailerUrl && (
+        <div
+          className="fixed inset-0 bg-black/95 z-999 flex items-center justify-center p-4"
+          onClick={() => setTrailerUrl(null)}
+        >
+          <div
+            className="relative w-full max-w-5xl bg-black rounded-2xl overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()} // biar klik di dalam modal tidak menutup
+          >
+            {/* Tombol Close */}
+            <button
+              onClick={() => setTrailerUrl(null)}
+              className="absolute top-4 right-4 z-10 text-white text-5xl hover:text-gray-300 transition-all hover:scale-110 cursor-pointer"
+            >
+              ×
+            </button>
+
+            {/* YouTube Player */}
+            <div className="relative pt-[56.25%]"> {/* 16:9 aspect ratio */}
+              <iframe
+                src={trailerUrl}
+                title="Game Trailer"
+                allowFullScreen
+                className="absolute top-0 left-0 w-full h-full border-0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; autoplay"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
+
+export default PopularGame;

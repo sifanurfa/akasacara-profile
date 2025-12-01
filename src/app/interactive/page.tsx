@@ -41,6 +41,7 @@ const Home = () => {
           </div>
         </div>
         <PortofolioList />
+        <Link href="/interactive/collection" className="button-main vfx-text-title text-center self-stretch">SEE ALL</Link>
       </div>
 
       {/* LATEST DEVLOG */}
