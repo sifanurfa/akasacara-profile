@@ -1,0 +1,61 @@
+.judul {
+  font-family: var(--font-playfair-display);
+  font-size: var(--text-headline-3);
+  font-style: normal;
+  font-weight: 600;
+  line-height: var(--text-lineheight-headline-3);
+}
+
+.devlog-slider-wrapper {
+    position: relative;
+    padding-left: 80px;
+    padding-right: 80px;
+}
+
+.devlog-slider-wrapper .slick-list {
+    overflow: hidden !important;
+}
+
+.devlog-slider-wrapper .slick-track {
+    display: flex;
+    align-items: stretch;
+}
+
+.devlog-slider-wrapper .slick-slide > div {
+    height: 100%;
+}
+
+.devlog-slider-wrapper .slick-prev:before,
+.devlog-slider-wrapper .slick-next:before {
+    display: none !important;
+}
+
+.devlog-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 60;
+}
+
+.devlog-prev {
+    left: -75px;
+}
+
+.devlog-next {
+    right: -75px;
+}
+
+@media (max-width: 768px) {
+    .devlog-slider-wrapper {
+    padding-left: 48px;
+    padding-right: 48px;
+    }
+
+    .devlog-prev {
+    left: 8px;
+    }
+
+    .devlog-next {
+    right: 8px;
+    }
+}

@@ -11,7 +11,7 @@ type WorkCardProps = {
 export function VideoCard({ title, year, image, type }: WorkCardProps) {
     return (
         <div className="flex flex-col items-center gap-m">
-            <div className="relative overflow-hidden w-full self-stretch aspect-288/383">
+            <div className="relative overflow-hidden w-full self-stretch aspect-video">
                 <Image
                     src={image}
                     alt={title}

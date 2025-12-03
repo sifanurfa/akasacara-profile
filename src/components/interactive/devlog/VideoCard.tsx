@@ -5,12 +5,11 @@ import Image from 'next/image';
 type PressCardProps = {
   documentId: string;
   title: string;
-  image: string;
-  date: string;
+  ytChannel: string;
   urlMedia: string;
 };
 
-function VideoCard({ title, image, date, urlMedia }: PressCardProps) {
+function VideoCard({ title, ytChannel, urlMedia }: PressCardProps) {
     // buka halaman article / eksternal link
     const handlePress = () => {
         if (typeof window !== "undefined") {
@@ -39,7 +38,7 @@ function VideoCard({ title, image, date, urlMedia }: PressCardProps) {
             <div className="flex flex-col py-l pr-l items-start justify-between self-stretch">
                 <div className="flex flex-col items-start gap-m self-stretch mb-md">
                     <div className="headline-3 vfx-text-title self-stretch line-clamp-3">{title}</div>
-                    <div className="body-reg vfx-text-subtitle-1 self-stretch">{date}</div>
+                    <div className="body-reg vfx-text-subtitle-1 self-stretch">{ytChannel}</div>
                 </div>
                 <div onClick={handlePress} className="flex items-center gap-5 vfx-text-title cursor-pointer">
                     <span className="button-secondary">WATCH HERE</span>

@@ -1,12 +1,28 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Slider, { CustomArrowProps } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { VFXApi } from "@/lib/api";
+import { VFX } from "@/types/api/types";
 
 export default function LatestBreakdown() {
+  const [highlight, setHighlight] = useState<VFX[]>([]);
+
+  useEffect(() => {
+      const fetchData = async () => {
+      try {
+          const data = await VFXApi.getHighlightImg();
+          setHighlight(data);
+      } catch (err) {
+          console.error("Failed to fetch Highlight:", err);
+      }
+      };
+      fetchData();
+  }, []);
+
   const NextArrow = ({ onClick }: CustomArrowProps) => {
     return (
       <div
@@ -72,22 +88,14 @@ export default function LatestBreakdown() {
     ],
   };
 
-  const images = [
-    "/assets/about.jpg",
-    "/assets/gowok.png",
-    "/assets/gowok2.png",
-    "/assets/about.jpg",
-    "/assets/gowok.png",
-  ];
-
   return (
     <div className="slider-container w-full overflow-hidden relative">
       <Slider {...settings}>
-        {images.map((src, idx) => (
+        {highlight.map((item, idx) => (
           <div key={idx} className="px-xl">
             <div className="relative w-full overflow-hidden aspect-3/2">
               <Image
-                src={src}
+                src={item.image}
                 alt={`image-${idx}`}
                 fill
                 className="object-cover transition-transform duration-300 ease-in-out"

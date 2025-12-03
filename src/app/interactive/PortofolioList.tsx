@@ -64,7 +64,7 @@ const PortofolioList: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full overflow-hidden rounded-lg">
+    <div className="relative w-full overflow-hidden">
       <Slider {...sliderSettings}>
         {portofolios.map((item) => (
           <div key={item.id} className="relative">
@@ -205,7 +205,7 @@ const PortofolioList: React.FC = () => {
             {/* Tombol Close */}
             <button
               onClick={() => setTrailerUrl(null)}
-              className="absolute top-4 right-4 z-10 text-white text-5xl hover:text-gray-300 transition-all hover:scale-110"
+              className="absolute top-4 right-4 z-10 text-white text-5xl hover:text-gray-300 transition-all hover:scale-110 cursor-pointer"
             >
               ×
             </button>
@@ -228,37 +228,3 @@ const PortofolioList: React.FC = () => {
 };
 
 export default PortofolioList;
-
-// function InteractiveCollection() {
-// }
-// type Portofolio = {
-//   id: number;
-//   title: string;
-//   desc: string;
-//   image: string;
-//   rating: number;
-// };
-
-// const portofolios: Portofolio[] = [
-//   {
-//     id: 1,
-//     title: "Ganyang Setan Alas! The Game",
-//     desc: "Ganyang Setan Alas! The Game is a single-player shooter set in a haunted Indonesian forest, where four students, armed with a range of weapons, must survive relentless zombie attacks and escape a cursed fate.",
-//     image: "/assets/GSA.png",
-//     rating: 4.5,
-//   },
-//   {
-//     id: 2,
-//     title: "Ganyang Setan Alas! — Chapter 2",
-//     desc: "Lanjutan petualangan horor penuh aksi dalam hutan terkutuk yang semakin kelam dan berbahaya.",
-//     image: "/assets/GSA.png",
-//     rating: 5,
-//   },
-//   {
-//     id: 3,
-//     title: "Ganyang Setan Alas! — Final Reveal",
-//     desc: "Pertarungan terakhir melawan kutukan yang memburu Anda tanpa henti.",
-//     image: "/assets/GSA.png",
-//     rating: 3.8,
-//   },
-// ];

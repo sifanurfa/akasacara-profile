@@ -4,16 +4,18 @@ import React, { useEffect, useState } from "react";
 import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { DevlogInteractivesApi } from "@/lib/api/interactive/devlogApi";
-import { DevlogInteractives } from "@/types/api/devlog";
+import { AnnouncementInteractiveApi } from "@/lib/api";
+import { AnnouncementInteractive } from "@/types/api/types";
+import "./DevlogSlider.css"
+import Image from "next/image";
 
 export default function InteractiveDevlog() {
-  const [devlogs, setDevlogs] = useState<DevlogInteractives[]>([]);
+  const [devlogs, setDevlogs] = useState<AnnouncementInteractive[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await DevlogInteractivesApi.getDevlogs();
+        const data = await AnnouncementInteractiveApi.getDevlog({ limit: 3, sort: "desc" });
         setDevlogs(data);
       } catch (err) {
         console.error("Failed to fetch works:", err);
@@ -33,14 +35,15 @@ export default function InteractiveDevlog() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          width: 56,
-          height: 56,
+          width: 45,
+          height: 45,
           borderRadius: "4px",
           border: "2px solid rgba(255,255,255,0.9)",
-          background: "rgba(0,0,0,0.6)",
         }}
       >
-        <img src="/assets/al.png" alt="prev" style={{ width: 22, height: 22 }} />
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" viewBox="0 0 15 20" fill="none">
+          <path d="M13.5 1.5L2.5 9.75L13.5 18" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+        </svg>
       </button>
     );
   }
@@ -55,14 +58,15 @@ export default function InteractiveDevlog() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          width: 56,
-          height: 56,
+          width: 45,
+          height: 45,
           borderRadius: "4px",
           border: "2px solid rgba(255,255,255,0.9)",
-          background: "rgba(0,0,0,0.6)",
         }}
       >
-        <img src="/assets/ar.png" alt="next" style={{ width: 22, height: 22 }} />
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="18" viewBox="0 0 14 18" fill="none">
+          <path d="M1.5 1.5L11.5 9L1.5 16.5" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+        </svg>
       </button>
     );
   }
@@ -85,89 +89,29 @@ export default function InteractiveDevlog() {
   };
 
   return (
-    <div className="devlog-slider-wrapper w-full max-w-[1440px] mx-auto px-8 md:px-12 lg:px-20">
-
-      <style jsx global>{`
-        .devlog-slider-wrapper {
-          position: relative;
-          padding-left: 80px;
-          padding-right: 80px;
-        }
-
-        .devlog-slider-wrapper .slick-list {
-          overflow: hidden !important;
-        }
-
-        .devlog-slider-wrapper .slick-track {
-          display: flex;
-          align-items: stretch;
-        }
-
-        .devlog-slider-wrapper .slick-slide > div {
-          height: 100%;
-        }
-
-        .devlog-slider-wrapper .slick-prev:before,
-        .devlog-slider-wrapper .slick-next:before {
-          display: none !important;
-        }
-
-        .devlog-arrow {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          z-index: 60;
-        }
-
-        .devlog-prev {
-          left: -75px;
-        }
-
-        .devlog-next {
-          right: -75px;
-        }
-
-        @media (max-width: 768px) {
-          .devlog-slider-wrapper {
-            padding-left: 48px;
-            padding-right: 48px;
-          }
-
-          .devlog-prev {
-            left: 8px;
-          }
-
-          .devlog-next {
-            right: 8px;
-          }
-        }
-      `}</style>
-
+    <div className="devlog-slider-wrapper w-full mx-auto pb-section px-container">
       <Slider {...sliderSettings}>
         {devlogs.map((item) => (
-         <div key={item.id} className="px-4">
+         <div key={item.id} onClick={() => window.open(item.urlMedia, "_blank", "noopener,noreferrer")} className="px-4 cursor-pointer">
             <div className="w-full max-w-[384px] mx-auto">
-              {/* CARD DENGAN TINGGI TETAP → PASTI SAMA 100% */}
-              <div className="bg-zinc-600 rounded-2xl overflow-hidden shadow-2xl flex flex-col h-[480px] md:h-[500px] lg:h-[520px] transition-transform duration-300 hover:scale-[1.02] hover:shadow-3xl">
-                
-                {/* GAMBAR – tinggi tetap */}
-                <div className="relative w-full h-[260px] md:h-[280px] lg:h-[300px] flex-shrink-0 overflow-hidden">
-                  <img 
-                    src={item.image || "/fallback.jpg"} 
+              <div className="bg-[#5E5E5E] overflow-hidden shadow-2xl flex flex-col transition-transform duration-300 hover:scale-[1.02] hover:shadow-3xl">                
+                <div className="relative w-full aspect-video shrink-0 overflow-hidden">
+                  <Image 
+                    src={item.image} 
                     alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                    fill
+                    className="w-full object-cover transition-transform duration-500 hover:scale-110"
                   />
                 </div>
 
-                {/* ISI TEKS – pakai flex + justify-between agar tanggal selalu di bawah */}
-                <div className="p-6 md:p-8 flex flex-col justify-between flex-1">
+                <div className="p-m flex flex-col justify-between flex-1 gap-s">
                   <div>
-                    <h3 className="text-white text-2xl md:text-3xl lg:text-3xl font-bold font-['Playfair_Display'] leading-tight line-clamp-3">
+                    <h3 className="vfx-text-title judul line-clamp-3">
                       {item.title}
                     </h3>
                   </div>
 
-                  <p className="text-stone-300 text-lg md:text-xl font-medium font-['Poppins'] mt-4">
+                  <p className="body-reg vfx-text-subtitle-1">
                     {item.date}
                   </p>
                 </div>

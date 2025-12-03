@@ -1,16 +1,30 @@
 import React from "react";
 
 interface WatchTrailerBtnProps {
-  trailerUrl?: string;
+  trailerUrl: string;
+  setTrailerUrl: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-function WatchTrailerBtn({ trailerUrl }: WatchTrailerBtnProps) {
+function WatchTrailerBtn({ trailerUrl, setTrailerUrl }: WatchTrailerBtnProps) {
   const handleClick = () => {
-    if (trailerUrl) {
-      window.open(trailerUrl, "_blank", "noopener,noreferrer");
-    } else {
-      alert("Trailer not available yet.");
+    if (!trailerUrl) {
+      alert("Trailer belum tersedia untuk game ini.");
+      return;
     }
+
+    const videoId = extractYouTubeId(trailerUrl);
+    if (videoId) {
+      setTrailerUrl(`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`);
+    } else {
+      window.open(trailerUrl, "_blank", "noopener,noreferrer");
+    }
+  };
+
+  const extractYouTubeId = (url: string): string | null => {
+    const regex =
+      /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
+    const match = url?.match(regex);
+    return match ? match[1] : null;
   };
 
   const text = "Watch Trailer";
@@ -45,7 +59,7 @@ function WatchTrailerBtn({ trailerUrl }: WatchTrailerBtnProps) {
         {text.split("").map((char, i) => (
           <span
             key={i}
-            className={`inline-block duration-700 [transition-delay:${i * 0.04}s] group-hover:[transform:rotateX(360deg)] [transform-style:preserve-3d]`}
+            className={`inline-block duration-700 [transition-delay:${i * 0.04}s] group-hover:transform-[rotateX(360deg)] transform-3d`}
           >
             {char === " " ? "\u00A0" : char}
           </span>

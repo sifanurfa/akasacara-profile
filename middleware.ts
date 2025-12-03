@@ -15,8 +15,13 @@ export function middleware(req: NextRequest) {
     return NextResponse.rewrite(url)
   }
 
+  if (hostname.startsWith('film')) {
+    url.pathname = `/main${url.pathname}`
+    return NextResponse.rewrite(url)
+  }
+
   // default ke domain utama (akasacara.com)
-  url.pathname = `/main${url.pathname}`
+  url.pathname = `/akasacara${url.pathname}`
   return NextResponse.rewrite(url)
 }
 

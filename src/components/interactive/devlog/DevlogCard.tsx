@@ -7,13 +7,21 @@ type PressCardProps = {
   title: string;
   image: string;
   date: string;
+  announceType: string;
   urlMedia: string;
 };
 
-function DevlogCard({ title, image, date, urlMedia }: PressCardProps) {
+function DevlogCard({ title, image, announceType, date, urlMedia }: PressCardProps) {
     // buka halaman article / eksternal link
     const handlePress = () => {
         window.open(urlMedia, "_blank", "noopener,noreferrer");
+    };
+
+    // Ambil thumbnail dari URL YouTube
+    const getYouTubeThumbnail = (url: string) => {
+        const match = url.match(/(?:v=|\.be\/)([^&\n?#]+)/);
+        const videoId = match ? match[1] : "";
+        return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
     };
 
     return (
@@ -21,7 +29,11 @@ function DevlogCard({ title, image, date, urlMedia }: PressCardProps) {
             <div className="bg-[#5E5E5E] flex flex-col justify-center items-center">
                 <div className="relative w-full aspect-video overflow-hidden">
                     <Image 
-                        src={image || "/fallback.jpg"}
+                        src={
+                            announceType === "videos"
+                            ? getYouTubeThumbnail(urlMedia)
+                            : image
+                        }
                         alt={title}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-110"

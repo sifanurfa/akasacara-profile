@@ -19,3 +19,10 @@
   font-weight: 600;
   line-height: var(--text-lineheight-button-sec);
 }
+.genre {
+  font-family: var(--font-poppins);
+  font-size: var(--text-caption);
+  font-style: normal;
+  font-weight: 500;
+  line-height: var(--text-lineheight-caption);
+}

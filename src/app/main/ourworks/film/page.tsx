@@ -34,7 +34,7 @@ function FilmProjects() {
                 id={item.id}
                 title={item.title}
                 year={item.year}
-                image={item.image}
+                image={item.landscapeImage}
                 description={item.description}
                 type={item.projectType}
                 isLast={index === film.length - 1}

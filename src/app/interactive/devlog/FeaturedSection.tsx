@@ -62,7 +62,11 @@ export default function FeaturedSection() {
                         <div className="flex flex-col items-start gap-s self-stretch">
                             <div className="headline-3 vfx-text-title self-stretch line-clamp-2">{item.title}</div>
                             <div className="flex items-center gap-s">
-                                <div className="flex justify-center items-center"></div>
+                                {item.genreList.map((item, idx) => (
+                                    <div key={idx} className="flex justify-center items-center bg-[#737373] p-s">
+                                        <div className="genre text-white">{item}</div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                         <div className="caption-reg vfx-text-title">{item.item}</div>

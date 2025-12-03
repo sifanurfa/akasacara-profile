@@ -12,6 +12,7 @@ interface Article {
   documentId: string;
   title: string;
   image: string;
+  ytChannel: string;
   announceType: string;
   urlMedia: string;
 }
@@ -43,6 +44,7 @@ export default function DevlogSection() {
         const devlog = await AnnouncementInteractiveApi.getDevlog();
         const news = await AnnouncementInteractiveApi.getNews();
         const videos = await AnnouncementInteractiveApi.getVideos();
+        console.log({ "data:": devlog });
 
         setArticlesData((prev) => ({
           ...prev,
@@ -110,8 +112,7 @@ export default function DevlogSection() {
               key={item.id}
               documentId={item.documentId}
               title={item.title}
-              image={item.image}
-              date={item.date}
+              ytChannel={item.ytChannel}
               urlMedia={item.urlMedia}
             />
           ))}
@@ -125,6 +126,7 @@ export default function DevlogSection() {
               title={item.title}
               image={item.image}
               date={item.date}
+              announceType={item.announceType}
               urlMedia={item.urlMedia}
             />
           ))}

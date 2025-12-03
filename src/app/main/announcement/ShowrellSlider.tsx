@@ -4,14 +4,22 @@ import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { AnnouncementFilmApi } from "@/lib/api";
-import { AnnouncementFilm } from "@/types/api/types";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+
+interface AnnouncementFilm {
+  id: number;
+  documentId: string;
+  urlMedia: string;
+  image: string;
+  title: string;
+  announceType: string;
+  date: string;
+}
 
 const ShowreelSlider: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [latestFour, setLatestFour] = useState<AnnouncementFilm[]>([]);
-  const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
   const router = useRouter();
 
   // ambil 4 data terbaru
@@ -79,10 +87,7 @@ const ShowreelSlider: React.FC = () => {
         {latestFour.map((item) => (
           <div key={item.id} className="relative w-screen min-h-screen">
             <Image
-              src={`${baseURL?.replace(
-                "/api",
-                ""
-              )}${item.media?.[0]?.url.replace("/api/", "/")}`}
+              src={item.image}
               alt={item.title}
               fill
               className="absolute top-0 left-0 w-full h-full object-cover"

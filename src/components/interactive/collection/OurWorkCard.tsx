@@ -8,7 +8,7 @@ type OurWorkCardProps = {
   image: string;
 };
 
-function OurWorkCard({ id, title, description, image }: OurWorkCardProps) {
+function OurWorkCard({ title, description, image }: OurWorkCardProps) {
   return (
     <div className="group flex items-center gap-l self-stretch transition-all duration-500">
       <div className="headline-2 vfx-text-title group-hover:px-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 -translate-x-10 transition-all duration-500 w-0 group-hover:w-1/4 text-right">

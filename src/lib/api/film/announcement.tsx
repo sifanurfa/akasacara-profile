@@ -27,7 +27,15 @@ export const AnnouncementFilmApi = {
           })
         : "";
 
-      return { ...item, image: fullUrl, date: formattedDate };
+      return {
+        id: item.id,
+        documentId: item.documentId,
+        urlMedia: item.urlMedia,
+        title: item.title,
+        announceType: item.announceType,
+        image: fullUrl, 
+        date: formattedDate 
+      };
     });
 
     // Urutkan data kalau parameter sort ada
@@ -63,7 +71,15 @@ export const AnnouncementFilmApi = {
         })
       : "";
 
-      return { ...item, image: fullUrl, date: formattedDate };
+      return {
+        id: item.id,
+        documentId: item.documentId,
+        urlMedia: item.urlMedia,
+        title: item.title,
+        announceType: item.announceType,
+        image: fullUrl, 
+        date: formattedDate 
+      };
     });
   },
   getPress: async () => {
@@ -83,7 +99,15 @@ export const AnnouncementFilmApi = {
         })
       : "";
 
-      return { ...item, image: fullUrl, date: formattedDate };
+      return {
+        id: item.id,
+        documentId: item.documentId,
+        urlMedia: item.urlMedia,
+        title: item.title,
+        announceType: item.announceType,
+        image: fullUrl, 
+        date: formattedDate 
+      };
     });
   },
   getBlogs: async (options?: { limit?: number; sort?: "asc" | "desc" }) => {
