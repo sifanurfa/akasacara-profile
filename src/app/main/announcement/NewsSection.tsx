@@ -84,7 +84,7 @@ export default function NewsSection() {
   const handlePress = (item: Article & { announceType?: string; documentId?: string; urlMedia?: string }) => {
     const type = item.announceType?.toLowerCase();
     if ((type === "blog" || type === "news") && item.documentId) {
-      router.push(`/main/article/${item.documentId}`);
+      router.push(`/article/${item.documentId}`);
     } else if (item.urlMedia) {
       window.open(item.urlMedia, "_blank", "noopener,noreferrer");
     }

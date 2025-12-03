@@ -22,6 +22,7 @@ function Article() {
 
       try {
         const data = await AnnouncementFilmApi.getArticlebyId(docId);
+        console.log("Fetched article data:", data);
         if (!data) {
           console.warn(
             "AnnouncementFilmApi.getArticle returned empty for id:",
@@ -56,9 +57,9 @@ function Article() {
   return (
     <div className="flex flex-col pb-section items-start">
       <div className="relative items-start self-stretch aspect-video">
-        {article?.urlMedia && (
+        {article?.image && (
           <Image
-            src={article.urlMedia}
+            src={article.image}
             alt={article.title}
             fill
             className="object-cover"

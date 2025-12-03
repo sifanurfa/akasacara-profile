@@ -52,7 +52,7 @@ const HighlightSection = () => {
         HIGHLIGHT
       </div>
 
-      <div className="self-stretch flex items-start gap-l">
+      <div className="self-stretch grid grid-cols-1 lg:grid-cols-2 items-start gap-l">
         {/* MAIN IMAGE */}
         {mainHighlight && (
           <div onClick={() => handlePress(mainHighlight)} className="flex-1 self-stretch flex flex-col items-start gap-m px-m pt-m cursor-pointer group hover:bg-akasacara-yellow transition-all duration-200">
@@ -90,7 +90,7 @@ const HighlightSection = () => {
             <div
               key={item.id}
               onClick={() => handlePress(item)}
-              className="flex flex-col"
+              className="flex flex-col self-stretch"
             >
               <div className="group self-stretch p-m flex justify-end items-center gap-2xl cursor-pointer hover:bg-akasacara-yellow transition-all duration-200">
                 <div className="flex-5 flex flex-col items-start gap-m">

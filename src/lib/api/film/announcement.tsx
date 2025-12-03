@@ -153,7 +153,7 @@ export const AnnouncementFilmApi = {
     return data;
   },
   getArticlebyId: async (documentId: string) => {
-    const res = await apiClient.get(`/announcement-films/${documentId}`);
+    const res = await apiClient.get(`/announcement-films/${documentId}?populate=media`);
 
     const item: AnnouncementFilm = res.data.data;
     const url = item.media?.[0]?.url || "";
@@ -167,7 +167,12 @@ export const AnnouncementFilmApi = {
         })
       : "";
 
-    return { ...item, image: fullUrl, date: formattedDate };
+    return { 
+      title: item.title,
+      item: item.item,
+      image: fullUrl, 
+      date: formattedDate }
+    ;
   },
   getHighlight: async (options?: { limit?: number; sort?: "asc" | "desc" }) => {
     const res = await apiClient.get("/announcement-films?populate=media&filters[highlight]=true");
