@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import InteractiveDevlog from "@/components/interactive/homepage/DevlogSlider";
 import PortofolioList from "./PortofolioList";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import Link from "next/link";
 import PlatformGame from "@/components/interactive/PlatformGame";
 import { ShowreelInteractiveApi } from "@/lib/api";
@@ -26,6 +27,7 @@ const Home = () => {
   
   return (
     <div className="relative bg-interactive overflow-hidden">
+      <Navbar/>
       {/* SHOWREEL */}
       {showreel && (
         <section className="showreel relative w-screen h-screen overflow-hidden">

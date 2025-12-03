@@ -37,7 +37,7 @@ export default function ContactForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col bg-akasacara-yellow py-section px-4xl justify-center items-center gap-3xl self-stretch rounded-[10px]"
+        className="flex flex-col bg-white py-section px-4xl justify-center items-center gap-3xl self-stretch rounded-[10px]"
       >
         <div className="flex flex-col items-start gap-10 self-stretch">
           {/* Name */}

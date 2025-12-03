@@ -1,22 +1,22 @@
 .highlightedPoster {
   position: relative;
-  width: 489px;
+  width: 330px;
   aspect-ratio: 489 / 733.5;
   overflow: hidden;
   border-radius: 10px;
   background: url('/assets/gowok.png') lightgray 0.745px -18.357px / 100% 102.876% no-repeat;
   box-shadow:
-    0 0 142.632px 0 #ECE5DA,
     0 0 81.504px 0 #ECE5DA,
     0 0 47.544px 0 #ECE5DA,
     0 0 23.772px 0 #ECE5DA,
     0 0 6.792px 0 #ECE5DA,
     0 0 3.396px 0 #ECE5DA;
 }
+/* 0 0 142.632px 0 #ECE5DA, */
 
 .posterWrapper {
   position: relative;
-  width: var(--Card-Poster_VFX, 432px);
+  width: var(--Card-Poster_VFX, 280px);
   aspect-ratio: 2 / 3;
   overflow: hidden;
   border-radius: 10px;

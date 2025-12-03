@@ -6,6 +6,8 @@ import styles from "./Collection.module.css";
 import PopularGame from "@/components/interactive/collection/PopularGame";
 import { InteractiveGameApi } from "@/lib/api";
 import { InteractiveGame } from "@/types/api/types";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import PlatformGame from "@/components/interactive/PlatformGame";
 
 function InteractiveCollection() {
@@ -25,6 +27,9 @@ function InteractiveCollection() {
 
   return (
     <div className="flex flex-col bg-interactive">
+      {/* Navbar */}
+      <Navbar/>
+
       {/* popular game */}
       <PopularGame />
 
@@ -70,6 +75,7 @@ function InteractiveCollection() {
         </div>
         <PlatformGame/>
       </div>
+      <Footer/>
     </div>
   );
 }
