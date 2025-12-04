@@ -140,7 +140,7 @@ export default function AkasacaraPage() {
                         }}
                     >
                         <Link
-                            href="/vfx"
+                            href="https://vfx.akasacara.web.id/"
                             className="self-stretch text-center transition-all duration-300 cursor-pointer whitespace-nowrap hover:scale-110 hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]"
                             onMouseEnter={(e) => {
                                 e.currentTarget.style.textShadow = '0 0 20px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.6)';
@@ -154,7 +154,7 @@ export default function AkasacaraPage() {
                             LodhongKrupuk VFX
                         </Link>
                         <Link
-                            href="/film"
+                            href="https://film.akasacara.web.id/"
                             className="self-stretch text-center transition-all duration-300 cursor-pointer whitespace-nowrap hover:scale-110 hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]"
                             onMouseEnter={(e) => {
                                 e.currentTarget.style.textShadow = '0 0 20px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.6)';
@@ -165,10 +165,10 @@ export default function AkasacaraPage() {
                                 setIsHovering(false);
                             }}
                         >
-                            Film.Akasacara
+                            Film.Akasacaraa
                         </Link>
                         <Link
-                            href="/interactive"
+                            href="https://interactive.akasacara.web.id/"
                             className="self-stretch text-center transition-all duration-300 cursor-pointer whitespace-nowrap hover:scale-110 hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]"
                             onMouseEnter={(e) => {
                                 e.currentTarget.style.textShadow = '0 0 20px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.6)';
@@ -271,7 +271,7 @@ export default function AkasacaraPage() {
                         }}
                         onMouseEnter={() => setHoveredSection(1)}
                         onMouseLeave={() => setHoveredSection(null)}
-                        onClick={() => handleNavClick('LodhongKrupuk VFX')}
+                        onClick={() => (window.location.href = "https://vfx.akasacara.web.id/")}
                     >
                         <div className="relative w-full h-full overflow-hidden">
                             <Image
@@ -301,7 +301,7 @@ export default function AkasacaraPage() {
                         }}
                         onMouseEnter={() => setHoveredSection(2)}
                         onMouseLeave={() => setHoveredSection(null)}
-                        onClick={() => handleNavClick('Film.Akasacara')}
+                        onClick={() => (window.location.href = "https://film.akasacara.web.id/")}
                     >
                         <div className="relative w-full h-full overflow-hidden">
                             <Image
@@ -331,7 +331,7 @@ export default function AkasacaraPage() {
                         }}
                         onMouseEnter={() => setHoveredSection(3)}
                         onMouseLeave={() => setHoveredSection(null)}
-                        onClick={() => handleNavClick('LodhongKrupuk Interactive')}
+                        onClick={() => (window.location.href = "https://interactive.akasacara.web.id/")}
                     >
                         <div className="relative w-full h-full overflow-hidden">
                             <Image
